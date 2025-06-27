@@ -13,10 +13,8 @@ function regenerateBubbles(isDark) {
   const container = document.querySelector(".bubbles");
   if (!container) return;
 
-  // Bersihkan bubble lama
   container.innerHTML = "";
 
-  // Buat ulang
   generateBubbles(isDark);
 }
 

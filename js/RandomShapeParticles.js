@@ -1,9 +1,7 @@
-// JavaScript - Fixed version
 function createSectionParticles() {
   const container = document.getElementById('particles-container');
   if (!container) return;
 
-  // Kurangi jumlah particle di mobile
   const isMobile = window.innerWidth <= 768;
   const particleCount = isMobile ? 15 : 30;
 
@@ -21,7 +19,6 @@ function createSectionParticles() {
     const randomType = particleTypes[Math.floor(Math.random() * particleTypes.length)];
     particle.className = randomType;
 
-    // Particle memenuhi seluruh area
     particle.style.left = Math.random() * 100 + '%';
     particle.style.top = Math.random() * 100 + '%';
     particle.style.animationDelay = Math.random() * 1 + 's';
@@ -49,7 +46,6 @@ window.addEventListener('scroll', function () {
     if (scrolled >= sectionTop - window.innerHeight && scrolled <= sectionTop + sectionHeight) {
       particles.forEach((particle, index) => {
         if (index % 3 === 0) {
-          // Kurangi kecepatan parallax di mobile
           const speed = isMobile ? 0.1 + (index % 3) * 0.02 : 0.4 + (index % 5) * 0.08;
           const yPos = (scrolled - sectionTop) * speed;
           particle.style.transform = `translateY(${yPos}px)`;

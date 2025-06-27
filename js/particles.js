@@ -11,10 +11,16 @@ window.addEventListener("themeChanged", (e) => {
 
 function loadParticlesByTheme(isDark) {
   if (typeof tsParticles === "undefined") return;
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  const particlesValue = isMobile ? 40 : 60;
+  const particlesLimit = isMobile ? 70 : 120;
+  const pushQuantity = isMobile ? 3 : 4;
+  const fpsLimit = 200;
 
   tsParticles.load("particles-js", {
     background: { color: { value: "transparent" } },
-    fpsLimit: 200,
+    fpsLimit: fpsLimit,
     interactivity: {
       events: {
         onClick: { enable: true, mode: "push" },
@@ -22,11 +28,19 @@ function loadParticlesByTheme(isDark) {
         resize: true,
       },
       modes: {
-        push: { quantity: 4 },
+        push: {
+          quantity: pushQuantity,
+          max: particlesLimit,
+        },
         repulse: { distance: 150, duration: 0.4 },
       },
     },
     particles: {
+      number: {
+        value: particlesValue,
+        density: { enable: true, area: 800 },
+        limit: particlesLimit,
+      },
       color: { value: isDark ? "#FFC107" : "#1E40AF" },
       links: {
         color: isDark ? "#FFD54F" : "#023047",
@@ -42,7 +56,6 @@ function loadParticlesByTheme(isDark) {
         outModes: { default: "bounce" },
         speed: 2,
       },
-      number: { density: { enable: true, area: 800 }, value: 60 },
       opacity: { value: 0.7 },
       shape: { type: "circle" },
       size: { value: { min: 3, max: 8 } },

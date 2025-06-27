@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
   createSectionParticles();
 });
 
-// Parallax effect on scroll - dengan batasan untuk mobile
 window.addEventListener('scroll', function () {
   const particles = document.querySelectorAll('#particles-container .particle');
   const scrolled = window.pageYOffset;

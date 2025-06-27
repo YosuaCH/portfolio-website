@@ -12,10 +12,8 @@ window.addEventListener("themeChanged", (e) => {
 function loadParticlesByTheme(isDark) {
   if (typeof tsParticles === "undefined") return;
 
-  // Deteksi mobile device
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  // Konfigurasi partikel sesuai device
   const particlesValue = isMobile ? 40 : 60;
   const particlesLimit = isMobile ? 70 : 120;
   const pushQuantity = isMobile ? 3 : 4;
